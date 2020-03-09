@@ -35,8 +35,4 @@ public class LimitedTriesQuiz extends Quiz {
 
         return correct ? "Correct!" : "Incorrect!";
     }
-
-
-
-
 }
