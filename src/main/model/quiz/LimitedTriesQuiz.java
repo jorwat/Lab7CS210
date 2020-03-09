@@ -25,16 +25,17 @@ public class LimitedTriesQuiz extends Quiz {
         int tries = curQuestion.getMaxMark();
         boolean correct = false;
 
-        if (this.curQuestion.isCorrect(answer)) {
-            this.markSoFar += tries;
-            correct = true;
-        } else if (!(this.curQuestion.isCorrect(answer))) {
-            if (tries == 0) {
-                throw new OutOfTriesException("Out of Tries");
+        for (int i = tries; i >= 0; i--) {
+            if (this.curQuestion.isCorrect(answer)) {
+                this.markSoFar += tries;
+                correct = true;
+            } else if (!(this.curQuestion.isCorrect(answer))) {
+                if (i == 0) {
+                    throw new OutOfTriesException("OutOfTries Exception");
+                } else {
+                    throw new AnswerIncorrectException("Incorrect");
+                }
             }
-        } else {
-            tries--;
-            throw new AnswerIncorrectException("Incorrect");
         }
         return correct ? "Correct!" : "Incorrect!";
     }

@@ -28,7 +28,7 @@ class ArithmeticAnswerCheckerTest {
         try {
             arithmeticAnswerChecker.checkAnswer("5.0");
         } catch (NumberFormatException e) {
-            fail("Exception should be thrown");
+            assertFalse(arithmeticAnswerChecker.checkAnswer("5.0"));
         }
     }
 
@@ -37,7 +37,7 @@ class ArithmeticAnswerCheckerTest {
         try {
             arithmeticAnswerChecker.checkAnswer("50000000000");
         } catch (NumberFormatException e) {
-            fail("Exception should be thrown");
+            assertFalse(arithmeticAnswerChecker.checkAnswer("50000000000"));
         }
     }
 
@@ -46,7 +46,7 @@ class ArithmeticAnswerCheckerTest {
         try {
             arithmeticAnswerChecker.checkAnswer("five");
         } catch (NumberFormatException e) {
-            fail("Exception should be thrown");
+            assertFalse(arithmeticAnswerChecker.checkAnswer("five"));
         }
     }
 }

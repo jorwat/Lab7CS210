@@ -26,7 +26,7 @@ public class UnlimitedTriesQuiz extends Quiz {
         boolean correct = super.checkAnswer(answer);
         numAttempts++;
         if (!correct) {
-            throw new AnswerIncorrectException("Incorrect");
+            throw new AnswerIncorrectException("Incorrect Exception");
         }
         return correct ? "Correct!" : "Incorrect!";
     }
