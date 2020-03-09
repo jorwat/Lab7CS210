@@ -2,7 +2,9 @@ package ui;
 
 import model.question.*;
 import model.quiz.InstantFeedbackQuiz;
+import model.quiz.LimitedTriesQuiz;
 import model.quiz.Quiz;
+import model.quiz.UnlimitedTriesQuiz;
 
 import static ui.QuizRunner.print;
 import static ui.QuizRunner.println;
@@ -48,24 +50,19 @@ class QuizBuilder {
         do {
             println("Enter a number for the type of quiz:");
             println("1 : Instant feedback quiz.");
-            // Uncomment lines below as you complete the implementation of UnlimitedTriesQuiz and LimitedTriesQuiz
-//            println("2 : Unlimited tries quiz.");
-//            println("3 : Limited tries quiz.");
+            println("2 : Unlimited tries quiz.");
+            println("3 : Limited tries quiz.");
 
             print(">>> ");
 
             String questionType = QuizRunner.getUserResponse();
             if (questionType.equals("1")) {
                 quiz = new InstantFeedbackQuiz(questionList);
+            } else if (questionType.equals("2")) {
+                quiz = new UnlimitedTriesQuiz(questionList);
+            } else if (questionType.equals("3")) {
+                quiz = new LimitedTriesQuiz(questionList);
             }
-            // uncomment next 3 lines to interactively check UnlimitedTriesQuiz
-//            else if (questionType.equals("2")) {
-//                quiz = new UnlimitedTriesQuiz(questionList);
-//            }
-            // uncomment next 3 lines to interactively check LimitedTriesQuiz
-//            else if (questionType.equals("3")) {
-//                quiz = new LimitedTriesQuiz(questionList);
-//            }
         } while (quiz == null);
         return quiz;
     }

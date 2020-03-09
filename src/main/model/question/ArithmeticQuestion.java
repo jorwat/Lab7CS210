@@ -1,6 +1,5 @@
 package model.question;
 
-import model.question.checker.AnswerChecker;
 import model.question.checker.ArithmeticAnswerChecker;
 
 // represents an addition, subtraction, or multiplication question with two operands

@@ -10,7 +10,8 @@ public class ArithmeticQuestionTest extends QuestionTest {
 
     @BeforeEach
     void runBefore() {
-        arithmeticQuestion = new ArithmeticQuestion(5, ArithmeticQuestion.Operation.ADDITION, 3,4);
+        arithmeticQuestion = new ArithmeticQuestion
+                (5, ArithmeticQuestion.Operation.ADDITION, 3,4);
         question = arithmeticQuestion;
     }
 
