@@ -27,8 +27,9 @@ public class LimitedTriesQuiz extends Quiz {
 
         for (int i = tries; i >= 0; i--) {
             if (this.curQuestion.isCorrect(answer)) {
-                this.markSoFar += tries;
+                this.markSoFar += i;
                 correct = true;
+                break;
             } else if (!(this.curQuestion.isCorrect(answer))) {
                 if (i == 0) {
                     throw new OutOfTriesException("OutOfTries Exception");
