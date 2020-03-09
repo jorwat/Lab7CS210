@@ -1,6 +1,5 @@
 package model.question.checker;
 
-// checks answers to arithmetic math problems
 public class ArithmeticAnswerChecker extends AnswerChecker {
     private int answer;
 
@@ -11,14 +10,12 @@ public class ArithmeticAnswerChecker extends AnswerChecker {
 
     @Override
     public boolean checkAnswer(String userResponse) {
+        boolean result;
         try {
-            Integer.parseInt(userResponse);
+            result = answer == Integer.parseInt(userResponse);
         } catch (NumberFormatException e) {
-            System.out.println("Incorrect");
-        } finally {
-            return answer == Integer.parseInt(userResponse);
+            result = false;
         }
+        return result;
     }
 }
-
-
