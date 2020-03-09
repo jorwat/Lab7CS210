@@ -15,7 +15,7 @@ public abstract class Quiz {
     // The index of the next question to show to the user.
     private int nextQuestion;
     // The user's mark so far.
-    private int markSoFar;
+    protected int markSoFar;
     // Maximum marks available for this quiz
     private int maxMark;
     // The current question that is displayed to the user.

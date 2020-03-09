@@ -13,7 +13,6 @@ public class LimitedTriesQuiz extends Quiz {
         super(questions);
     }
 
-
     // MODIFIES: this
     // EFFECTS: submit an answer to the current question and return feedback string;
     // if the answer is incorrect, decrements the max mark of the current question by one;
@@ -24,15 +23,19 @@ public class LimitedTriesQuiz extends Quiz {
     public String submitAnswer(String answer) throws AnswerIncorrectException, OutOfTriesException {
 
         int tries = curQuestion.getMaxMark();
-        boolean correct = super.checkAnswer(answer);
+        boolean correct = false;
 
-        if (!correct) {
+        if (this.curQuestion.isCorrect(answer)) {
+            this.markSoFar += tries;
+            correct = true;
+        } else if (!(this.curQuestion.isCorrect(answer))) {
+            if (tries == 0) {
+                throw new OutOfTriesException("Out of Tries");
+            }
+        } else {
             tries--;
             throw new AnswerIncorrectException("Incorrect");
-        } else if (!correct && tries == 0) {
-            throw new OutOfTriesException("Out of Tries");
         }
-
         return correct ? "Correct!" : "Incorrect!";
     }
 }
