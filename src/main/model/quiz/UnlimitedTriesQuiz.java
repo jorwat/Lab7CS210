@@ -23,14 +23,11 @@ public class UnlimitedTriesQuiz extends Quiz {
     // throws AnswerIncorrectException if the user should re-try the question;
     @Override
     public String submitAnswer(String answer) throws AnswerIncorrectException {
-        boolean correct;
-
-        if (this.curQuestion.isCorrect(answer)) {
-            correct = true;
-        } else {
-            throw new AnswerIncorrectException("Incorrect Exception");
-        }
+        boolean correct = super.checkAnswer(answer);
         numAttempts++;
+        if (correct == false) {
+            throw new AnswerIncorrectException("Incorrect");
+        }
         return correct ? "Correct!" : "Incorrect!";
     }
 
