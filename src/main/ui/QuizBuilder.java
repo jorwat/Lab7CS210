@@ -32,11 +32,11 @@ class QuizBuilder {
         questionList.addQuestion(q1);
         questionList.addQuestion(q2);
 
-        // Un-comment next four lines to interactively check ArithmeticQuestion:
-//        Question q3 = new ArithmeticQuestion(6, ArithmeticQuestion.Operation.ADDITION, 5, 2);
-//        Question q4 = new ArithmeticQuestion(6, ArithmeticQuestion.Operation.MULTIPLICATION, 5, 3);
-//        questionList.addQuestion(q3);
-//        questionList.addQuestion(q4);
+
+        Question q3 = new ArithmeticQuestion(6, ArithmeticQuestion.Operation.ADDITION, 5, 2);
+        Question q4 = new ArithmeticQuestion(6, ArithmeticQuestion.Operation.MULTIPLICATION, 5, 3);
+        questionList.addQuestion(q3);
+        questionList.addQuestion(q4);
 
         return questionList;
     }
