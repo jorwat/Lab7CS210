@@ -27,7 +27,7 @@ public class LimitedTriesQuiz extends Quiz {
         boolean correct = super.checkAnswer(answer);
 
         if (!correct) {
-            if (q.getMaxMark() == 0) {
+            if (q.getMaxMark() < 0) {
                 throw new OutOfTriesException("Out of Tries");
             }
             q.setMaxMark(q.getMaxMark() - 1);
