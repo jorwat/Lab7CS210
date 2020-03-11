@@ -1,5 +1,6 @@
 package model.quiz;
 
+import model.question.Question;
 import model.question.QuestionList;
 import model.exceptions.OutOfTriesException;
 import model.exceptions.AnswerIncorrectException;
@@ -22,17 +23,18 @@ public class LimitedTriesQuiz extends Quiz {
     @Override
     public String submitAnswer(String answer) throws AnswerIncorrectException, OutOfTriesException {
 
-        int tries = curQuestion.getMaxMark();
+        Question q = super.curQuestion;
+        int tries = q.getMaxMark();
         boolean correct = false;
 
         for (int i = tries; i >= 0; i--) {
-            if (this.curQuestion.isCorrect(answer)) {
-                this.markSoFar += i;
+            if (q.isCorrect(answer)) {
+                super.markSoFar += i;
                 correct = true;
                 break;
-            } else if (!(this.curQuestion.isCorrect(answer))) {
+            } else if (!(q.isCorrect(answer))) {
                 if (i == 0) {
-                    throw new OutOfTriesException("OutOfTries Exception");
+                    throw new OutOfTriesException("Out Of Tries!");
                 } else {
                     throw new AnswerIncorrectException("Incorrect");
                 }

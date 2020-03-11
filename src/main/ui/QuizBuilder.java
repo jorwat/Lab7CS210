@@ -2,6 +2,7 @@ package ui;
 
 import model.question.*;
 import model.quiz.InstantFeedbackQuiz;
+import model.quiz.LimitedTriesQuiz;
 import model.quiz.Quiz;
 import model.quiz.UnlimitedTriesQuiz;
 
@@ -50,7 +51,7 @@ class QuizBuilder {
             println("Enter a number for the type of quiz:");
             println("1 : Instant feedback quiz.");
             println("2 : Unlimited tries quiz.");
-//            println("3 : Limited tries quiz.");
+            println("3 : Limited tries quiz.");
 
             print(">>> ");
 
@@ -59,11 +60,9 @@ class QuizBuilder {
                 quiz = new InstantFeedbackQuiz(questionList);
             } else if (questionType.equals("2")) {
                 quiz = new UnlimitedTriesQuiz(questionList);
+            } else if (questionType.equals("3")) {
+                quiz = new LimitedTriesQuiz(questionList);
             }
-            // uncomment next 3 lines to interactively check LimitedTriesQuiz
-//            else if (questionType.equals("3")) {
-//                quiz = new LimitedTriesQuiz(questionList);
-//            }
         } while (quiz == null);
         return quiz;
     }

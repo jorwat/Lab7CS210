@@ -58,7 +58,6 @@ public class LimitedTriesQuizTest extends QuizTest {
             assertFalse(quiz.hasMoreQuestions());
             assertEquals(".", quiz.endQuiz());
         } catch (Exception e) {
-            //pass
         }
     }
 
@@ -67,19 +66,20 @@ public class LimitedTriesQuizTest extends QuizTest {
         try {
             quiz.getNextQuestion();
             String feedback = quiz.submitAnswer("erth");
-            fail("Incorrect!");
+            fail("Incorrect");
             assertEquals("Incorrect!", feedback);
             assertEquals(3, quiz.curQuestion.getMaxMark());
             feedback = quiz.submitAnswer("Ert");
-            fail("Incorrect!");
+            fail("Incorrect");
             assertEquals("Incorrect!", feedback);
             assertEquals(2, quiz.curQuestion.getMaxMark());
             feedback = quiz.submitAnswer("mars");
-            fail("Incorrect!");
+            fail("Incorrect");
             assertEquals("Incorrect!", feedback);
             assertEquals(1, quiz.getMarkSoFar());
             feedback = quiz.submitAnswer("moon");
-            fail("Incorrect!");
+            fail("Incorrect");
+            fail("Out of Tries");
             assertEquals(".", quiz.endQuiz());
         } catch (OutOfTriesException | AnswerIncorrectException e) {
             //pass
