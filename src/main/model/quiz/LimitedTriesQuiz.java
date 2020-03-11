@@ -24,21 +24,14 @@ public class LimitedTriesQuiz extends Quiz {
     public String submitAnswer(String answer) throws AnswerIncorrectException, OutOfTriesException {
 
         Question q = super.curQuestion;
-        int tries = q.getMaxMark();
-        boolean correct = false;
+        boolean correct = super.checkAnswer(answer);
 
-        for (int i = tries; i >= 0; i--) {
-            if (q.isCorrect(answer)) {
-                super.markSoFar += i;
-                correct = true;
-                break;
-            } else if (!(q.isCorrect(answer))) {
-                if (i == 0) {
-                    throw new OutOfTriesException("Out Of Tries!");
-                } else {
-                    throw new AnswerIncorrectException("Incorrect");
-                }
+        if (!correct) {
+            if (q.getMaxMark() == 0) {
+                throw new OutOfTriesException("Out of Tries");
             }
+            q.setMaxMark(q.getMaxMark() - 1);
+            throw new AnswerIncorrectException("Incorrect Exception");
         }
         return correct ? "Correct!" : "Incorrect!";
     }
