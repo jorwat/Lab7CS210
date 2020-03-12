@@ -26,13 +26,13 @@ public class LimitedTriesQuiz extends Quiz {
         Question q = super.curQuestion;
         boolean correct = super.checkAnswer(answer);
 
-        if (q.getMaxMark() == 1) {
-            throw new OutOfTriesException("Incorrect!");
-        } else if (!correct) {
+        if (!correct) {
+            if (q.getMaxMark() == 0) {
+                throw new OutOfTriesException("Out of Tries");
+            }
             q.setMaxMark(q.getMaxMark() - 1);
             throw new AnswerIncorrectException("Incorrect!");
         }
-
         return correct ? "Correct!" : "Incorrect!";
     }
 }
