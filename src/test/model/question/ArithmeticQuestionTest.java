@@ -46,7 +46,7 @@ public class ArithmeticQuestionTest extends QuestionTest {
     @Test
     void testCheckAnswerIncorrect() {
         assertFalse(question.isCorrect("5"));
-        assertFalse(question.isCorrect("5"));
-        assertFalse(question.isCorrect("5"));
+        assertFalse(question2.isCorrect("5"));
+        assertFalse(question3.isCorrect("5"));
     }
 }
