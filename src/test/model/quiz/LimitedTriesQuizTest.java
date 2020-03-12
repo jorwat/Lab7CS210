@@ -79,9 +79,13 @@ public class LimitedTriesQuizTest extends QuizTest {
             assertEquals(1, quiz.getMarkSoFar());
             feedback = quiz.submitAnswer("moon");
             fail("Incorrect");
+            assertEquals("Incorrect!", feedback);
+            assertEquals(0, quiz.getMarkSoFar());
             fail("Out of Tries");
             assertEquals(".", quiz.endQuiz());
-        } catch (OutOfTriesException | AnswerIncorrectException e) {
+        } catch (OutOfTriesException e) {
+            //pass
+        } catch (AnswerIncorrectException e) {
             //pass
         }
     }

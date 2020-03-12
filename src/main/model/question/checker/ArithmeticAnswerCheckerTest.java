@@ -15,20 +15,30 @@ class ArithmeticAnswerCheckerTest {
 
     @Test
     void testCaseMatch() {
-        assertTrue(arithmeticAnswerChecker.checkAnswer("5"));
+        try {
+            assertTrue(arithmeticAnswerChecker.checkAnswer("5"));
+        } catch (NumberFormatException e) {
+            fail("No exception");
+        }
     }
 
     @Test
     void noCaseMatch() {
-        assertFalse(arithmeticAnswerChecker.checkAnswer("6"));
+        try {
+            assertFalse(arithmeticAnswerChecker.checkAnswer("6"));
+        } catch (NumberFormatException e) {
+            fail("No exception");
+        }
+
     }
 
     @Test
     void testFloat() {
         try {
             arithmeticAnswerChecker.checkAnswer("5.0");
-        } catch (NumberFormatException e) {
             assertFalse(arithmeticAnswerChecker.checkAnswer("5.0"));
+        } catch (NumberFormatException e) {
+            //pass
         }
     }
 
@@ -36,8 +46,9 @@ class ArithmeticAnswerCheckerTest {
     void testMinMax() {
         try {
             arithmeticAnswerChecker.checkAnswer("50000000000");
-        } catch (NumberFormatException e) {
             assertFalse(arithmeticAnswerChecker.checkAnswer("50000000000"));
+        } catch (NumberFormatException e) {
+            //pass
         }
     }
 
@@ -45,8 +56,9 @@ class ArithmeticAnswerCheckerTest {
     void invalidString() {
         try {
             arithmeticAnswerChecker.checkAnswer("five");
-        } catch (NumberFormatException e) {
             assertFalse(arithmeticAnswerChecker.checkAnswer("five"));
+        } catch (NumberFormatException e) {
+            //pass
         }
     }
 }
